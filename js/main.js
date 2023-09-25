@@ -1,3 +1,29 @@
+const preloader = () => {
+  let loader = document.querySelector(".d-bar");
+  let percentage = document.querySelector(".percent");
+
+  let percent = 0;
+
+  window.addEventListener("load", () => {
+    setInterval(() => {
+      if (percent <= 99) {
+        percent++;
+        loader.style.width = `${percent}%`;
+        percentage.innerHTML = `${percent}%`;
+      } else {
+        clearInterval(percent);
+        gsap.to("#preloader", {
+          y: "-100%",
+          ease: Power4,
+          duration: 1,
+        });
+      }
+    }, 100);
+  });
+};
+
+preloader();
+
 let tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#two",
