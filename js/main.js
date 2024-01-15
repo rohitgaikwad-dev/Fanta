@@ -14,7 +14,7 @@ const preloader = () => {
         clearInterval(percent);
         gsap.to("#preloader", {
           y: "-100%",
-          ease: Power4,
+          ease: "power4.inOut", 
           duration: 1,
         });
       }
