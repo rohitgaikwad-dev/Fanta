@@ -5,24 +5,25 @@ const preloader = () => {
   let percent = 0;
 
   window.addEventListener("load", () => {
-    setInterval(() => {
-      if (percent <= 99) {
-        percent++;
+    let interval = setInterval(() => {
+      if (percent < 100) {
+        percent += 5;  
         loader.style.width = `${percent}%`;
         percentage.innerHTML = `${percent}%`;
       } else {
-        clearInterval(percent);
+        clearInterval(interval);
         gsap.to("#preloader", {
           y: "-100%",
-          ease: Power4,
-          duration: 1,
+          ease: Power4.easeInOut,  
+          duration: 1,  
         });
       }
-    }, 100);
+    }, 50);
   });
 };
 
 preloader();
+
 
 let tl = gsap.timeline({
   scrollTrigger: {
